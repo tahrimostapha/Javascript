@@ -1,12 +1,17 @@
 var gameOver = false;
 var dictionnary = ["Bonjour","BeCode","Mufasa","Lovelace"];
-var toGuess = dictionnary[random()].toUpperCase().split("");
-
+var toGuess;
 var proposition = [];
-initProposition();
-
 var usedLetter = [];
 var cptFailedTry = 0;
+
+init();
+
+// Initialise les tableaux "toGuess" et "proposition"
+function init(){
+  toGuess = dictionnary[random()].toUpperCase().split("");
+  initProposition();
+}
 
 // Crée une valeur aléatoire pour la séléction dans le dictionnaire
 function random(){
@@ -24,7 +29,6 @@ function initProposition(){
 var Game = function(){
   while (!gameOver) {
     let input = askingPlayer();
-    alert(input.charCodeAt(0));
     while((!Number.isNaN(Number(input)) || !(input.charCodeAt(0) >= 65 && input.charCodeAt(0) <= 90)) || (input.length != toGuess.length && input.length != 1)){
       alert("Saisie incorrecte. Recommencez!");
       input = askingPlayer();
